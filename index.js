@@ -12,7 +12,7 @@ var consoleLog = console.log.bind(console);
 
 function httpRequestAppender(config) {
     return function (loggingEvent) {
-
+        consoleLog(JSON.stringify(loggingEvent));
         //validate configuration
         if (config != null && config.httpRequest != null && config.httpRequest.endpoint != null &&
             config.httpRequest.method != null && config.httpRequest.contentType != null &&
@@ -24,7 +24,7 @@ function httpRequestAppender(config) {
             };
 
             if (config.httpRequest.contentType === 'application/x-www-form-urlencoded') {
-                options.form = config.params
+                options.form = config.params;
                 options.form.metadata = loggingEvent;
 
             } else if (config.httpRequest.contentType === 'application/json') {
