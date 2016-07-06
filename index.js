@@ -37,7 +37,7 @@ function httpRequestAppender(config) {
             consoleLog("httpRequestAppender: Invalid Configuration please check");
             return;
         }
-
+        consoleLog(JSON.stringify(options));
 
         request(options, function (error, response, body) {
             if (error) console.log("Error from httpRequestAppender: ".concat(JSON.stringify(error)));
