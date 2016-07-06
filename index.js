@@ -17,9 +17,10 @@ function httpRequestAppender(config) {
         if (config != null && config.httpRequest != null && config.httpRequest.endpoint != null &&
             config.httpRequest.method != null && config.httpRequest.contentType != null &&
             config.params != null && config.paramUsedToSendLoggingEvent) {
-            var options = { method: config.httpRequest.method,
+            var options = {
+                method: config.httpRequest.method,
                 url: config.httpRequest.endpoint,
-                headers: { 'content-type': config.httpRequest.contentType}
+                headers: {'content-type': config.httpRequest.contentType}
             };
 
             if (config.httpRequest.contentType === 'application/x-www-form-urlencoded') {
@@ -28,11 +29,11 @@ function httpRequestAppender(config) {
 
             } else if (config.httpRequest.contentType === 'application/json') {
                 options.body = config.params;
-                options.body[config.paramUsedToSendLoggingEvent] = loggingEvent;
+                options.body.metadata = loggingEvent;
             } else {
                 consoleLog("ContentType: ".concat(config.httpRequest.contentType, " is not supported"));
             }
-        }else{
+        } else {
             consoleLog("httpRequestAppender: Invalid Configuration please check");
             return;
         }
