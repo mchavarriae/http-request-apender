@@ -1,6 +1,6 @@
 {
   "name": "http-request-appender",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "http request appender for log4js",
   "main": "index.js",
   "author": "Marlon Chavarria <mchavarriae@gmail.com>",
