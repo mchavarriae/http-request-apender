@@ -24,7 +24,7 @@ function httpRequestAppender(config) {
 
             if (config.httpRequest.contentType === 'application/x-www-form-urlencoded') {
                 options.form = config.params
-                options.form[config.paramUsedToSendLoggingEvent] = loggingEvent;
+                options.form[config.paramUsedToSendLoggingEvent] = JSON.stringify(loggingEvent);
 
             } else if (config.httpRequest.contentType === 'application/json') {
                 options.body = config.params;
